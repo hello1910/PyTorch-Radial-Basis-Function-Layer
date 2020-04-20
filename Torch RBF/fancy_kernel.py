@@ -13,7 +13,7 @@ class FancyKernel:
     ''''
     return torch.matmul(x,self.M).data.numpy
   def calc_likelihood(self,x,y):
-
+    ##CALC LIKELIHOOD IN LOG PROB FORM##
     return -1 *likelihood #in log probability form
   def forward(self,data):
     '''
