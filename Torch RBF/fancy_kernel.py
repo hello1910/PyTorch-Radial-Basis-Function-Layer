@@ -6,6 +6,7 @@ class FancyKernel:
     self.K_theta=
     self.sigma_w=sigma_w
     self.M=
+    self.optimizer= optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
   def transform_inputs(x):
     ''''
     x.dim = (n,2)
@@ -21,11 +22,17 @@ class FancyKernel:
     '''
     x=transform_inputs(data[0])
     y=data[1]
-    return self.calc_likelihood(x,y)
-  def train(self,data)
-    loss=self.forward(data)
-    loss.backward()
-    ###put in some optimizer! stop when loss stops decreasing? or for 10 epochs?###
+    sum=0 #CONVERT TO PYTORCH TENSOR?
+    for i in range(x.size()[0]):
+      sum+=self.calc_likelihood(x[i,:],y[i,:])
+    return sum
+  def train(self,data):
+    for i in range(10):
+      loss=self.forward(data)
+      print(loss.data)
+      loss.backward()
+      optimizer.step()
+ 
      
      
     
